@@ -2,13 +2,13 @@ import math
 
 
 def print_matrix( matrix ):
-    str = ""
+    ret = ""
     for r in range(len(matrix)):
         for c in range(len(matrix[r])):
-            str += matrix[r][c]
-            str += "\t"
-        str += "\n"
-    print str
+            ret += str(matrix[r][c])
+            ret += "\t"
+        ret += "\n"
+    print ret
 
 def ident( matrix ):
     for r in range(len(matrix)):
@@ -17,7 +17,6 @@ def ident( matrix ):
                 matrix[r][c] = 1
             else:
                  matrix[r][c] = 0
-    return matrix
     
 
 def scalar_mult( matrix, s ):
@@ -28,12 +27,20 @@ def scalar_mult( matrix, s ):
 
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-    tmp = new_matrix(len(m2[0], len(m1))
-    for r in range(len(m1)):#this is throwing a syntax error!? I'm not sure if I am missing something obvious.
-        for c in range(len(m2[0])):
-            for i in range(len(m2)):
-                     tmp[r][c] += m1[r][i]*m2[i][c]
-    return tmp
+    if(len(m1[0]) == len(m2)):
+        tmp = new_matrix(len(m2[0]), len(m1))
+        for r in range( len(m2[0])):
+            for c in range(len(m2)):
+                num = 0;
+                for i in range(len( m1[c])):
+                    num += m1[c][i] * m2[i][r];
+                tmp[c][r] = num
+        for r in range(len(m2)):
+            for c in range(len(m1[r])):
+                m2[r][c] = tmp[r][c]
+        return tmp
+    else:
+        print "Cannot multiply these matrices"
 
 
 def new_matrix(rows = 4, cols = 4):

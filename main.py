@@ -3,14 +3,16 @@ from draw import *
 
 screen = new_screen()
 color = [ 0, 255, 0 ]
-matrix = new_matrix()
-m2 = new_matrix()
+matrix = []
+m2 = []
 add_edge(matrix,1,2,3,4,5,6)
 add_edge(matrix,7,8,9,10,11,12)
 add_edge(m2,1,2,3,4,5,6)
 add_edge(m2,7,8,9,10,11,12)
 print("Original matrix:")
 print_matrix(matrix)
+print_matrix(m2)
+
 print("Testing matrix_mult, multiply matrix by itself:\n")
 print_matrix(matrix_mult(matrix,m2))
 print("Testing ident():\n")
